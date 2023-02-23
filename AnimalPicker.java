@@ -9,6 +9,8 @@ public class AnimalPicker {
             System.out.println("ASCII_DOG_ART_GOES_HERE");
         } else if (animal.equalsIgnoreCase("cat")) {
             System.out.println("ASCII_CAT_GOES_HERE");
+        } else {
+            System.out.println("Invalid selection!");
         }
         input.close();
     }
