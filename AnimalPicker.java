@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class AnimalPicker {
@@ -8,15 +10,38 @@ public class AnimalPicker {
             System.out.println("Which animal would you like to see? A dog or cat");
             String animal = input.nextLine();
             if (animal.equalsIgnoreCase("dog")) {
-                System.out.println("ASCII_DOG_ART_GOES_HERE");
+                showASCIIArt(1);
                 validAnimal = true;
             } else if (animal.equalsIgnoreCase("cat")) {
-                System.out.println("ASCII_CAT_GOES_HERE");
+                showASCIIArt(0);
                 validAnimal = true;
             } else {
                 System.out.println("Invalid selection! Please try again.");
             }
         }
         input.close();
+    }
+
+    public static void showASCIIArt(int animal) {
+        File animalFile = null;
+        if (animal == 0) {
+            animalFile = new File("cat.txt");
+        } else if (animal == 1) {
+            animalFile = new File("dog.txt");
+        }
+        try {
+            Scanner scanner = new Scanner(animalFile);
+            boolean endOfFile = false;
+            while (!endOfFile) {
+                if (scanner.hasNextLine()) {
+                    System.out.println(scanner.nextLine());
+                } else {
+                    endOfFile = true;
+                }
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
