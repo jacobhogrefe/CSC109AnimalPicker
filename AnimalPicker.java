@@ -7,7 +7,7 @@ public class AnimalPicker {
         Scanner input = new Scanner(System.in);
         boolean validAnimal = false;
         while (!validAnimal) {
-            System.out.println("Which animal would you like to see? A dog, cat, or fish?");
+            System.out.println("Which animal would you like to see? A dog, cat, fish, or elephant?");
             String animal = input.nextLine();
             if (animal.equalsIgnoreCase("dog")) {
                 showASCIIArt(1);
@@ -17,6 +17,9 @@ public class AnimalPicker {
                 validAnimal = true;
             } else if (animal.equalsIgnoreCase("fish")) {
                 showASCIIArt(2);
+                validAnimal = true;
+            } else if (animal.equalsIgnoreCase("elephant")) {
+                showASCIIArt(3);
                 validAnimal = true;
             } else {
                 System.out.println("Invalid selection! Please try again.");
@@ -33,6 +36,8 @@ public class AnimalPicker {
             animalFile = new File("dog.txt");
         } else if (animal == 2) {
             animalFile = new File("fish.txt");
+        } else if (animal == 3) {
+            animalFile = new File("elephant.txt");
         }
         try {
             Scanner scanner = new Scanner(animalFile);
